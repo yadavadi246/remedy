@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Remedy — keep important work visible.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>Remedy</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">REMEDY</p>
+        <h1>Stay conscious of what matters.</h1>
+      </div>
+      <button id="focusBtn" class="ghost" type="button">Focus</button>
+    </header>
+
+    <section class="pulse" aria-label="Current task">
+      <div>
+        <span class="label">RIGHT NOW</span>
+        <h2 id="nowTitle">Nothing urgent.</h2>
+        <p id="nowMeta">Add a task and put it in Now.</p>
+      </div>
+      <button id="completeNow" class="primary" type="button">Complete</button>
+    </section>
+
+    <section class="composer" aria-label="Add task">
+      <input id="taskInput" type="text" maxlength="120" placeholder="What needs to be done?" autocomplete="off">
+      <select id="priorityInput" aria-label="Priority">
+        <option value="3">Low</option>
+        <option value="2" selected>Medium</option>
+        <option value="1">High</option>
+      </select>
+      <select id="bucketInput" aria-label="Bucket">
+        <option value="now" selected>Now</option>
+        <option value="next">Next</option>
+        <option value="later">Later</option>
+      </select>
+      <button id="addBtn" class="primary" type="button">Add</button>
+    </section>
+
+    <section class="board" aria-label="Tasks">
+      <div class="column" data-bucket="now">
+        <div class="column-head"><h3>Now</h3><span id="nowCount">0</span></div>
+        <div class="tasks" id="nowTasks"></div>
+      </div>
+      <div class="column" data-bucket="next">
+        <div class="column-head"><h3>Next</h3><span id="nextCount">0</span></div>
+        <div class="tasks" id="nextTasks"></div>
+      </div>
+      <div class="column" data-bucket="later">
+        <div class="column-head"><h3>Later</h3><span id="laterCount">0</span></div>
+        <div class="tasks" id="laterTasks"></div>
+      </div>
+    </section>
+
+    <footer><span id="stats">0 active · 0 completed</span><button id="clearBtn" class="text-btn" type="button">Clear completed</button></footer>
+  </main>
+
+  <dialog id="focusDialog">
+    <div class="focus-card">
+      <button id="closeFocus" class="close" type="button" aria-label="Close">×</button>
+      <span class="label">FOCUS</span>
+      <h2 id="focusTitle">No task selected.</h2>
+      <p>Do this one thing. Ignore the rest until it is finished.</p>
+      <button id="focusComplete" class="primary wide" type="button">Mark complete</button>
+    </div>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
